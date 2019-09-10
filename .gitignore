@@ -1,0 +1,6 @@
+**/__pycache__
+export_java_path
+*.conf
+**/bin
+**/.buildozer
+**/.vscode
