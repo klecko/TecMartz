@@ -1,0 +1,146 @@
+<Label>:
+    size_hint: 0.1, 0.1
+    color: (0,0,0,1)
+
+<TextInput>:
+    multiline: False
+
+
+<MyGrid>
+    txtModelo: txtModelo
+    lblEstado: lblEstado
+    btnUpdate: btnUpdate
+    btnSearch: btnSearch
+
+    BoxLayout:
+        Label:
+            pos_hint: {"top":1}
+            font_size: 100
+            text: "TecMartz"
+            color: 1,0,0,1
+            halign: "center"
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.3
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+    Button:
+        pos_hint: {"top":1, "right":1}
+        size_hint: None, 0.1
+        width: self.height
+        background_normal: "conf.png"
+        background_down: "conf_pressed.png"
+        border: 0,0,0,0
+        on_release: root.btnConf_onclick()
+    
+    Label:
+        text: "Introduzca modelo: "
+        pos_hint: {"x":0.2, "top": 0.8}
+
+    TextInput:
+        id: txtModelo
+        pos_hint: {"x":0.5, "top":0.77}
+        size_hint: 0.4, 0.05
+        hint_text_color: 1,0,0,1 
+        
+    BoxLayout:
+        orientation: "horizontal"
+        pos_hint:{"top":0.6}
+        size_hint: 1,0.15
+
+        Button:
+            #background_color: [1,0,0,1]
+            id: btnUpdate
+            #pos_hint: {"x":0.02, "top":0.5}
+            size_hint_y: 1
+            size: root.size
+            text: "Actualizar excel"
+            on_release: root.btnUpdate_onclick()
+
+        
+        Button:
+            id: btnSearch
+            #pos_hint: {"x":0.6, "top":0.5}
+            size_hint_y: 1
+            text: "Buscar"
+            on_release: root.btnSearch_onclick()
+
+    BoxLayout:
+        Label:
+            id: lblEstado
+            text: "Estado"
+            text_size: self.width, None
+            halign: "center"
+            pos_hint: {"top":0.3}
+            size_hint: 0.2, 0.3
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,0.3
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+
+<PopupResult>
+    lblResult: lblResult
+
+    title: "Resultados de la búsqueda"
+    size_hint: None, 0.5
+    width: lblResult.texture_size[0]*1.3
+    
+
+    ScrollView:
+        Label:
+            id: lblResult
+            padding_y: root.height*0.03
+            size_hint: 1, None
+            height: self.texture_size[1]
+            color:1,1,1,1
+           
+
+<PopupConf>:
+    txtNumDisenos: txtNumDisenos
+    txtLocalExcel: txtLocalExcel
+    txtRemoteExcel: txtRemoteExcel
+
+    title: "Configuración"
+    size_hint: 0.9, 0.5
+    pos_hint: {"top":0.9}
+
+    GridLayout:
+        cols: 2
+
+        Label:
+            text: "Número de diseños:"
+            size_hint_x: 0.5
+            text_size: self.width, None
+            halign: "center"
+            color: 1,1,1,1
+        TextInput:
+            id: txtNumDisenos
+            size_hint_x: 0.5
+            input_filter: "int"
+            use_bubble: True
+
+        Label:
+            text: "Dirección local del excel:"
+            size_hint_x: 0.5
+            text_size: self.width, None
+            halign: "center"
+            color: 1,1,1,1
+        TextInput:
+            id: txtLocalExcel
+            size_hint_x: 0.5
+            use_bubble: True
+
+        Label:
+            text: "Dirección remota del excel:"
+            size_hint_x: 0.5
+            text_size: self.width, None
+            halign: "center"
+            color: 1,1,1,1
+        TextInput:
+            id: txtRemoteExcel
+            size_hint_x: 0.5
+            use_bubble: True
